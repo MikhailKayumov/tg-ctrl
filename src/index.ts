@@ -24,15 +24,19 @@ async function main(): Promise<void> {
     const usernameToDelete = await prompt(
       'Введите username пользователя или бота для удаления (оставить пустым для пропуска): ',
     );
-    for (const group of groups) {
-      await deleteUserFromGroup(group, usernameToDelete);
+    if (usernameToDelete) {
+      for (const group of groups) {
+        await deleteUserFromGroup(group, usernameToDelete);
+      }
     }
 
     const usernameToAdd = await prompt(
       'Введите username пользователя или бота для добавления (оставить пустым для пропуска): ',
     );
-    for (const group of groups) {
-      await addUserToGroup(group, usernameToAdd);
+    if (usernameToAdd) {
+      for (const group of groups) {
+        await addUserToGroup(group, usernameToAdd);
+      }
     }
   } catch (error) {
     console.error('Ошибка:', error);
